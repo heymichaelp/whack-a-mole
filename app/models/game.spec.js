@@ -35,7 +35,7 @@ describe('Game', function() {
 
     it('creates the right number of rounds', function(done) {
       let game = new Game('easy')
-      game.config.roundDurations = Array(10).fill(1)
+      game.config.roundDurations = _.times(10, 1)
 
       game.on('end', () => {
         expect(game.rounds.length).toEqual(10)
@@ -47,7 +47,7 @@ describe('Game', function() {
 
     it('tracks the right score', function() {
       let game = new Game('easy')
-      game.config.roundDurations = Array(10).fill(1)
+      game.config.roundDurations = _.times(10, 1)
 
       var round = game.initiateRound(0);
       round.start()

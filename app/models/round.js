@@ -12,7 +12,10 @@ function bindCallbackToMoleWhacks (holes, cb) {
   holes.forEach((hole) => hole.mole.on('whack', cb))
 }
 
-let newRoundAudio = new Audio('public/newround.mp3')
+let newRoundAudio = null
+if (window.Audio) {
+  newRoundAudio = new window.Audio('public/newround.mp3')
+}
 
 export default class Round extends EventDispatcher {
   constructor (scoreIncrement, duration, holes) {
@@ -35,17 +38,20 @@ export default class Round extends EventDispatcher {
   }
 
   end () {
-    clearTimeout(this.timeout)
+    clearTimeout(this.timeoutId)
     tellMolesToHide(this.holes)
 
     // this is to let all React components update
     // before we start a new round
-    setTimeout(() => { this.trigger('end') }, 0)
+    setTimeout(() => {this.trigger('end')}, 0)
   }
 
   startCountDown () {
-    newRoundAudio.play()
-    this.timeout = setTimeout(this.end.bind(this), this.duration)
+    if (newRoundAudio) {
+      newRoundAudio.play()
+    }
+
+    this.timeoutId = setTimeout(this.end.bind(this), this.duration)
   }
 
   start () {

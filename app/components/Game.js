@@ -9,10 +9,10 @@ class Game extends React.Component {
 
   render () {
     let classes = classNames({
+      'game-board': true,
       easy: this.props.game.difficultyLevel === 'easy',
       medium: this.props.game.difficultyLevel === 'medium',
-      hard: this.props.game.difficultyLevel === 'hard',
-      'game-board': true
+      hard: this.props.game.difficultyLevel === 'hard'
     })
 
     return (

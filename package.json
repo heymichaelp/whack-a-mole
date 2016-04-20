@@ -6,8 +6,7 @@
   "scripts": {
     "test": "npm run build:js:test && mocha dist/public/test.js --ignoreLeaks false --reporter html --globals Audio",
     "watch:js": "watchify app/app.js -o dist/public/app.js -dv  -t [ babelify --presets [ es2015 react ] ]",
-    "build:js:test": "browserify app/**/*.spec.js -o dist/public/test.js -dv  -t [ babelify --presets [ es2015 react ] ]",
-    "watch:js:test": "watchify app/**/*.spec.js -o dist/public/test.js -dv  -t [ babelify --presets [ es2015 react ] ]"
+    "watch:js:test": "mochify app/**/*.spec.js --watch --transform [ babelify --presets [ es2015 react ] ] -R spec"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +18,7 @@
     "expect": "^1.16.0",
     "mocha": "^2.4.5",
     "mocha-phantomjs": "^4.0.2",
+    "react-addons-test-utils": "^15.0.1",
     "standard": "^6.0.8"
   },
   "dependencies": {

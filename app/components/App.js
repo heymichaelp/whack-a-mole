@@ -4,8 +4,10 @@ import GameModel from '../models/game'
 import Dashboard from './Dashboard'
 import Game from './Game'
 
-let welcomeAudio = new window.Audio('public/backgroundmusic.mp3')
-welcomeAudio.loop = true
+if (window.Audio) {
+  let welcomeAudio = new window.Audio('public/backgroundmusic.mp3')
+  welcomeAudio.loop = true
+}
 
 class App extends React.Component {
   constructor (props) {

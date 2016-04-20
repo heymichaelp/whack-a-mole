@@ -1,6 +1,9 @@
 import EventDispatcher from '../utilities/EventDispatcher/EventDispatcher'
 
-let whackSound = new Audio('public/whack.mp3')
+let whackSound = null
+if (window.Audio) {
+  whackSound = new window.Audio('public/whack.mp3')
+}
 
 export default class Mole extends EventDispatcher {
   constructor () {
@@ -16,7 +19,10 @@ export default class Mole extends EventDispatcher {
   }
 
   whack () {
-    whackSound.play()
+    if (whackSound) {
+      whackSound.play()
+    }
+
     this.trigger('whack')
     this.hide()
   }
