@@ -4,8 +4,9 @@ import GameModel from '../models/game'
 import Dashboard from './Dashboard'
 import Game from './Game'
 
+let welcomeAudio = null
 if (window.Audio) {
-  let welcomeAudio = new window.Audio('public/backgroundmusic.mp3')
+  welcomeAudio = new window.Audio('public/backgroundmusic.mp3')
   welcomeAudio.loop = true
 }
 

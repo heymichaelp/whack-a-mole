@@ -43,7 +43,7 @@ export default class Round extends EventDispatcher {
 
     // this is to let all React components update
     // before we start a new round
-    setTimeout(() => {this.trigger('end')}, 0)
+    setTimeout(() => { this.trigger('end') }, 0)
   }
 
   startCountDown () {

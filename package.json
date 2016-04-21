@@ -31,7 +31,12 @@
   },
   "standard": {
     "globals": [
-      "Audio"
+      "Audio",
+      "describe",
+      "it",
+      "context",
+      "beforeEach",
+      "before"
     ]
   }
 }

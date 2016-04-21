@@ -32,7 +32,7 @@ export default class Mole extends EventDispatcher {
     this.trigger('up')
   }
 
-  isUp() {
+  isUp () {
     return this.state === 'up'
   }
 }

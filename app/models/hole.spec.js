@@ -2,9 +2,9 @@ import expect from 'expect'
 import Hole from './hole'
 import Mole from './mole'
 
-describe('Hole', function() {
-  describe('#assignMole', function() {
-    it('assigns the mole to the hole', function() {
+describe('Hole', function () {
+  describe('#assignMole', function () {
+    it('assigns the mole to the hole', function () {
       let hole = new Hole()
 
       expect(hole.mole).toNotExist()
@@ -16,9 +16,9 @@ describe('Hole', function() {
     })
   })
 
-  describe('#hasMole', function() {
-    context('it has a mole', function() {
-      it('returns true', function() {
+  describe('#hasMole', function () {
+    context('it has a mole', function () {
+      it('returns true', function () {
         let hole = new Hole()
         let mole = new Mole()
 
@@ -27,8 +27,8 @@ describe('Hole', function() {
         expect(hole.hasMole()).toEqual(true)
       })
     })
-    context('it doesn\'t have a mole', function() {
-      it('returns true', function() {
+    context('it doesn\'t have a mole', function () {
+      it('returns true', function () {
         let hole = new Hole()
 
         expect(hole.hasMole()).toEqual(false)

@@ -4,8 +4,8 @@ import Game from './Game'
 import GameModel from '../models/game'
 import TestUtils from 'react-addons-test-utils'
 
-function setup() {
-  let game = new GameModel('easy');
+function setup () {
+  let game = new GameModel('easy')
 
   let props = {
     game
@@ -24,7 +24,7 @@ function setup() {
 
 describe('Game', () => {
   it('should render default correctly', () => {
-    const { props, renderer } = setup()
+    const { renderer } = setup()
     let output = null
 
     output = renderer.getRenderOutput()
@@ -34,7 +34,7 @@ describe('Game', () => {
   })
 
   it('should have the right number of holes', () => {
-    const { props, renderer } = setup()
+    const { renderer } = setup()
     let output = null
 
     output = renderer.getRenderOutput()

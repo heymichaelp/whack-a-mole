@@ -1,13 +1,12 @@
 import expect from 'expect'
 import React from 'react'
 import Hole from './Hole'
-import UUID from 'uuid-js'
 import HoleModel from '../models/hole'
 import MoleModel from '../models/mole'
 import TestUtils from 'react-addons-test-utils'
 
-function setup() {
-  let hole = new HoleModel();
+function setup () {
+  let hole = new HoleModel()
   hole.assignMole(new MoleModel())
 
   let props = {

@@ -4,9 +4,9 @@ import Round from './round'
 import Hole from './hole'
 import Mole from './mole'
 
-describe('Hole', function() {
-  describe('#constructor', function() {
-    before(function() {
+describe('Hole', function () {
+  describe('#constructor', function () {
+    before(function () {
       this.holes = _.times(3, () => new Hole())
       this.scoreIncrementSpy = expect.createSpy()
       this.duration = 1
@@ -14,19 +14,19 @@ describe('Hole', function() {
       this.round = new Round(this.scoreIncrementSpy, this.duration, this.holes)
     })
 
-    it('starts out with a zero score', function() {
+    it('starts out with a zero score', function () {
       expect(this.round.score).toEqual(0)
     })
 
-    it('starts out with all moles remaining', function() {
+    it('starts out with all moles remaining', function () {
       expect(this.round.remainingMoles).toEqual(this.holes.length)
     })
   })
 
-  describe('#start', function() {
-    beforeEach(function() {
+  describe('#start', function () {
+    beforeEach(function () {
       this.holes = _.times(3, () => new Hole())
-      this.holes.forEach(hole => hole.assignMole(new Mole()))
+      this.holes.forEach((hole) => hole.assignMole(new Mole()))
       this.scoreIncrementSpy = expect.createSpy()
       this.duration = 10
 
@@ -34,11 +34,11 @@ describe('Hole', function() {
       this.round.start()
     })
 
-    it('has all moles visible', function() {
-      expect(_.every(this.holes, hole => hole.mole.isUp())).toEqual(true)
+    it('has all moles visible', function () {
+      expect(_.every(this.holes, (hole) => hole.mole.isUp())).toEqual(true)
     })
 
-    it('responds appropriately to mole whacks', function() {
+    it('responds appropriately to mole whacks', function () {
       this.holes[0].mole.whack()
 
       expect(this.scoreIncrementSpy).toHaveBeenCalled()
@@ -47,10 +47,10 @@ describe('Hole', function() {
     })
   })
 
-  describe('#end', function() {
-    beforeEach(function() {
+  describe('#end', function () {
+    beforeEach(function () {
       this.holes = _.times(3, () => new Hole())
-      this.holes.forEach(hole => hole.assignMole(new Mole()))
+      this.holes.forEach((hole) => hole.assignMole(new Mole()))
       this.scoreIncrementSpy = expect.createSpy()
       this.duration = 100
 
@@ -59,11 +59,11 @@ describe('Hole', function() {
       this.round.start()
     })
 
-    it('lasts the duration if not all moles are whacked', function(done) {
-      let currentTime = new Date();
+    it('lasts the duration if not all moles are whacked', function (done) {
+      let currentTime = new Date()
 
       this.round.on('end', () => {
-        let expiredTime = new Date();
+        let expiredTime = new Date()
 
         expect(expiredTime - currentTime).toBeGreaterThanOrEqualTo(this.duration - 10)
 
@@ -71,18 +71,18 @@ describe('Hole', function() {
       })
     })
 
-    it('is over when all moles are hit', function(done) {
-      let currentTime = new Date();
+    it('is over when all moles are hit', function (done) {
+      let currentTime = new Date()
 
       this.round.on('end', () => {
-        let expiredTime = new Date();
+        let expiredTime = new Date()
 
         expect(expiredTime - currentTime).toBeLessThanOrEqualTo(20)
 
         done()
       })
 
-      this.holes.forEach(hole => hole.mole.whack())
+      this.holes.forEach((hole) => hole.mole.whack())
     })
   })
 })

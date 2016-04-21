@@ -11,13 +11,14 @@ Additionally, the game is available at [http://interview.whack-a-mole.s3-website
 Tests are written using Mocha and expect, as well as React TestUtils for testing components. Run them with the following command:
 
 ```
+$ npm i
 $ npm i mochify -g
 $ npm test
 ```
 
 ## Thought Process
 
-When I first sat down to think through the application structure, I first thought about the domain models.  They are as follows:
+When I initially sat down to think through the application structure, I first thought through the domain models.  They are as follows:
 
 `Game`: represents one game, with a number of holes and a number of rounds
 `Round`: belongs to a single game, has a time limit, number of moles shown, and a score

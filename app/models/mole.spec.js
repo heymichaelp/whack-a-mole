@@ -1,17 +1,17 @@
 import expect from 'expect'
 import Mole from './mole'
 
-describe('Mole', function() {
-  describe('#constructor', function() {
-    it('starts down', function() {
+describe('Mole', function () {
+  describe('#constructor', function () {
+    it('starts down', function () {
       let mole = new Mole()
 
       expect(mole.state).toEqual('down')
     })
   })
 
-  describe('#appear', function() {
-    it('changes state appropriately', function() {
+  describe('#appear', function () {
+    it('changes state appropriately', function () {
       let mole = new Mole()
 
       mole.appear()
@@ -19,7 +19,7 @@ describe('Mole', function() {
       expect(mole.state).toEqual('up')
     })
 
-    it('triggers callbacks', function() {
+    it('triggers callbacks', function () {
       let mole = new Mole()
       let appearSpy = expect.createSpy()
 
@@ -30,8 +30,8 @@ describe('Mole', function() {
     })
   })
 
-  describe('#whack', function() {
-    it('changes state appropriately', function() {
+  describe('#whack', function () {
+    it('changes state appropriately', function () {
       let mole = new Mole()
 
       mole.appear()
@@ -43,7 +43,7 @@ describe('Mole', function() {
       expect(mole.state).toEqual('down')
     })
 
-    it('triggers callbacks', function() {
+    it('triggers callbacks', function () {
       let mole = new Mole()
       let whackSpy = expect.createSpy()
       let hideSpy = expect.createSpy()
@@ -57,8 +57,8 @@ describe('Mole', function() {
     })
   })
 
-  describe('#hide', function() {
-    it('changes state appropriately', function() {
+  describe('#hide', function () {
+    it('changes state appropriately', function () {
       let mole = new Mole()
 
       mole.appear()
@@ -70,7 +70,7 @@ describe('Mole', function() {
       expect(mole.state).toEqual('down')
     })
 
-    it('triggers callbacks', function() {
+    it('triggers callbacks', function () {
       let mole = new Mole()
       let hideSpy = expect.createSpy()
 
