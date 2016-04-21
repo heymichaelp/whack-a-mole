@@ -17,7 +17,7 @@ class Game extends React.Component {
 
     return (
       <div className={classes}>
-        {this.props.game.holes.map((hole) => <Hole hole={hole} />)}
+        {this.props.game.holes.map(hole => <Hole key={hole.id.toString()} hole={hole} />)}
       </div>
     )
   }

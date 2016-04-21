@@ -22,25 +22,23 @@ function setup() {
   }
 }
 
-describe('components', () => {
-  describe('Game', () => {
-    it('should render default correctly', () => {
-      const { props, renderer } = setup()
-      let output = null
+describe('Game', () => {
+  it('should render default correctly', () => {
+    const { props, renderer } = setup()
+    let output = null
 
-      output = renderer.getRenderOutput()
+    output = renderer.getRenderOutput()
 
-      expect(output.type).toBe('div')
-      expect(output.props.className).toBe('game-board easy')
-    })
+    expect(output.type).toBe('div')
+    expect(output.props.className).toBe('game-board easy')
+  })
 
-    it('should have the right number of holes', () => {
-      const { props, renderer } = setup()
-      let output = null
+  it('should have the right number of holes', () => {
+    const { props, renderer } = setup()
+    let output = null
 
-      output = renderer.getRenderOutput()
+    output = renderer.getRenderOutput()
 
-      expect(output.props.children.length).toBe(12)
-    })
+    expect(output.props.children.length).toBe(12)
   })
 })

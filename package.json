@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run build:js:test && mocha dist/public/test.js --ignoreLeaks false --reporter html --globals Audio",
+    "test": "mochify app/**/*.spec.js --transform [ babelify --presets [ es2015 react ] ] -R spec",
     "watch:js": "watchify app/app.js -o dist/public/app.js -dv  -t [ babelify --presets [ es2015 react ] ]",
     "watch:js:test": "mochify app/**/*.spec.js --watch --transform [ babelify --presets [ es2015 react ] ] -R spec"
   },
@@ -26,7 +26,8 @@
     "classnames": "^2.2.3",
     "lodash": "^4.11.1",
     "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "react-dom": "^15.0.1",
+    "uuid-js": "^0.7.5"
   },
   "standard": {
     "globals": [

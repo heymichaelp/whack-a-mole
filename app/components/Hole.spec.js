@@ -1,6 +1,7 @@
 import expect from 'expect'
 import React from 'react'
 import Hole from './Hole'
+import UUID from 'uuid-js'
 import HoleModel from '../models/hole'
 import MoleModel from '../models/mole'
 import TestUtils from 'react-addons-test-utils'
@@ -14,7 +15,7 @@ function setup() {
   }
 
   let renderer = TestUtils.createRenderer()
-  renderer.render(<Hole {...props} />)
+  renderer.render(<Hole key={hole.id.toString()} {...props} />)
   let output = renderer.getRenderOutput()
 
   return {
@@ -24,39 +25,37 @@ function setup() {
   }
 }
 
-describe('components', () => {
-  describe('Hole', () => {
-    it('should render default correctly', () => {
-      const { output } = setup()
+describe('Hole', () => {
+  it('should render default correctly', () => {
+    const { output } = setup()
 
-      expect(output.type).toBe('div')
-      expect(output.props.className).toBe('hole')
-    })
+    expect(output.type).toBe('div')
+    expect(output.props.className).toBe('hole')
+  })
 
-    it('should change classes when it appears', () => {
-      const { props, renderer } = setup()
+  it('should change classes when it appears', () => {
+    const { props, renderer } = setup()
 
-      props.hole.mole.appear()
-      let output = renderer.getRenderOutput()
+    props.hole.mole.appear()
+    let output = renderer.getRenderOutput()
 
-      expect(output.type).toBe('div')
-      expect(output.props.className).toBe('hole mole-is-up')
-    })
+    expect(output.type).toBe('div')
+    expect(output.props.className).toBe('hole mole-is-up')
+  })
 
-    it('should change classes on click', () => {
-      const { props, renderer } = setup()
-      let output = null
+  it('should change classes on click', () => {
+    const { props, renderer } = setup()
+    let output = null
 
-      props.hole.mole.appear()
-      output = renderer.getRenderOutput()
+    props.hole.mole.appear()
+    output = renderer.getRenderOutput()
 
-      expect(output.type).toBe('div')
-      expect(output.props.className).toBe('hole mole-is-up')
+    expect(output.type).toBe('div')
+    expect(output.props.className).toBe('hole mole-is-up')
 
-      output.props.onClick()
-      output = renderer.getRenderOutput()
+    output.props.onClick()
+    output = renderer.getRenderOutput()
 
-      expect(output.props.className).toBe('hole')
-    })
+    expect(output.props.className).toBe('hole')
   })
 })

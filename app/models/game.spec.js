@@ -38,8 +38,10 @@ describe('Game', function() {
       game.config.roundDurations = _.times(10, 1)
 
       game.on('end', () => {
-        expect(game.rounds.length).toEqual(10)
-        done()
+        setTimeout(() => {
+          expect(game.rounds.length).toEqual(10)
+          done()
+        }, 0)
       })
 
       game.start()
