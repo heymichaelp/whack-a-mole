@@ -31,10 +31,6 @@ export default class Round extends EventDispatcher {
   decrementNumberOfRemainingMoles () {
     this.remainingMoles--
     this.score++
-
-    if (this.remainingMoles === 0) {
-      this.end()
-    }
   }
 
   end () {

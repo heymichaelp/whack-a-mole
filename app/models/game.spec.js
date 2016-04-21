@@ -51,11 +51,11 @@ describe('Game', function () {
       let game = new Game('easy')
       game.config.roundDurations = _.times(10, 1)
 
-      var round1 = game.initiateRound(0)
+      let round1 = game.initiateRound(0)
       round1.start()
       round1.holes[0].mole.trigger('whack')
 
-      var round2 = game.initiateRound(1)
+      let round2 = game.initiateRound(1)
       round2.start()
       round2.holes[0].mole.trigger('whack')
 

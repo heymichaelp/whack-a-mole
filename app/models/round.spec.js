@@ -70,19 +70,5 @@ describe('Hole', function () {
         done()
       })
     })
-
-    it('is over when all moles are hit', function (done) {
-      let currentTime = new Date()
-
-      this.round.on('end', () => {
-        let expiredTime = new Date()
-
-        expect(expiredTime - currentTime).toBeLessThanOrEqualTo(20)
-
-        done()
-      })
-
-      this.holes.forEach((hole) => hole.mole.whack())
-    })
   })
 })
