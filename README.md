@@ -4,7 +4,7 @@
 
 Open the `dist/index.html` file in your browser to start playing. Make sure your sound is on!
 
-Additionally, the game is available at [interview.whack-a-mole.s3-website-us-east-1.amazonaws.com](interview.whack-a-mole.s3-website-us-east-1.amazonaws.com)
+Additionally, the game is available at [http://interview.whack-a-mole.s3-website-us-east-1.amazonaws.com/](http://interview.whack-a-mole.s3-website-us-east-1.amazonaws.com/)
 
 ## Tests
 
@@ -37,6 +37,16 @@ I used an `EventDispatcher` class that I had made a little while back, which is 
 ## Component Architecture
 
 The application uses React for building the interface. As you'll note from the components, the application is very simple. The `App` and `Dashboard` components are for starting the game and choosing the difficulty level, and for handling "routing". `Game` renders the grid of `Hole` components, which are responsible for the displaying and hiding of the mole and for listening to the click event.
+
+## Difficulty Level
+
+Once I wrote the initial approach, I realized that it would be very simple to introduce difficulty levels. A difficulty level is defined as thus:
+
+* Number of holes
+* Number of moles per round
+* Seconds until round is over
+
+For number of moles per round and seconds until round is over, I applied some logic. For number of moles, I have a min and max range from which each round chooses a random number. Then, for the seconds until the round is over, a start and end duration is specified and we calculate the steps down from the max to the min based on the number of rounds. So, for example, if we have the range specified as `10000...5000`, and we have `5` rounds, we step down as `[10000, 9000, 8000, 7000, 6000]` (this range is not inclusive). This means the game play speeds up from round to round.
 
 ## Graphics
 
